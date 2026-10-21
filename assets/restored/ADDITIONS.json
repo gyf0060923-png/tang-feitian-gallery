@@ -1,0 +1,37 @@
+[
+  {
+    "file": "yulin-25-dance.png",
+    "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET: an authentic Dunhuang Academy photograph of Yulin Cave 25 north-wall dancing apsara, a single flying figure holding a flower, green water and red/green ribbons. Create a restrained digital restoration visualization of this EXACT source. Preserve exact aspect ratio, all four edges, framing, perspective, every figure's position and scale, every limb, hand, foot, instrument, ribbon and ornament. Mend only small cracks, pigment flakes and small plaster losses by continuing immediately adjacent visible lines and texture. Retain the original muted earth mineral palette, patina, fine brushwork and material surface. Do not invent people or anatomy, do not replace faces, do not redesign patterns, no glamour, new gold, modern illustration, 3D rendering or exaggerated saturation. If statues are present keep their shape, paint and lighting unchanged. Preserve ambiguous or large missing areas rather than speculating. No added text, labels, borders, watermark or signature. Return one full uncropped image in the same composition and aspect ratio. This will be explicitly labeled AI restoration visualization, never an official conservation result.",
+    "original": "assets/yulin-25-dance.png",
+    "output": "assets/restored/yulin-25-dance.png",
+    "mode": "builtin imagegen"
+  },
+  {
+    "file": "mogao-322-ceiling.png",
+    "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET: an authentic Dunhuang Academy photograph of Mogao Cave 322 painted square ceiling canopy surrounded by a ring of flying musical apsaras. Create a restrained digital restoration visualization of this EXACT source. Preserve exact aspect ratio, all four edges, framing, perspective, every figure's position and scale, every limb, hand, foot, instrument, ribbon and ornament. Mend only small cracks, pigment flakes and small plaster losses by continuing immediately adjacent visible lines and texture. Retain the original muted earth mineral palette, patina, fine brushwork and material surface. Do not invent people or anatomy, do not replace faces, do not redesign patterns, no glamour, new gold, modern illustration, 3D rendering or exaggerated saturation. If statues are present keep their shape, paint and lighting unchanged. Preserve ambiguous or large missing areas rather than speculating. No added text, labels, borders, watermark or signature. Return one full uncropped image in the same composition and aspect ratio. This will be explicitly labeled AI restoration visualization, never an official conservation result.",
+    "original": "assets/mogao-322-ceiling.png",
+    "output": "assets/restored/mogao-322-ceiling.png",
+    "mode": "builtin imagegen"
+  },
+  {
+    "file": "mogao-322-niche.png",
+    "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET: an authentic Dunhuang Academy photograph of Mogao Cave 322 west-niche roof with a group of flying apsaras on a cinnabar field. Create a restrained digital restoration visualization of this EXACT source. Preserve exact aspect ratio, all four edges, framing, perspective, every figure's position and scale, every limb, hand, foot, instrument, ribbon and ornament. Mend only small cracks, pigment flakes and small plaster losses by continuing immediately adjacent visible lines and texture. Retain the original muted earth mineral palette, patina, fine brushwork and material surface. Do not invent people or anatomy, do not replace faces, do not redesign patterns, no glamour, new gold, modern illustration, 3D rendering or exaggerated saturation. If statues are present keep their shape, paint and lighting unchanged. Preserve ambiguous or large missing areas rather than speculating. No added text, labels, borders, watermark or signature. Return one full uncropped image in the same composition and aspect ratio. This will be explicitly labeled AI restoration visualization, never an official conservation result.",
+    "original": "assets/mogao-322-niche.png",
+    "output": "assets/restored/mogao-322-niche.png",
+    "mode": "builtin imagegen"
+  },
+  {
+    "file": "mogao-039-apsaras.jpg",
+    "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET: an authentic Dunhuang Academy photograph of Mogao Cave 39 west-niche photograph with five flying apsaras above real clay disciple statues. Create a restrained digital restoration visualization of this EXACT source. Preserve exact aspect ratio, all four edges, framing, perspective, every figure's position and scale, every limb, hand, foot, instrument, ribbon and ornament. Mend only small cracks, pigment flakes and small plaster losses by continuing immediately adjacent visible lines and texture. Retain the original muted earth mineral palette, patina, fine brushwork and material surface. Do not invent people or anatomy, do not replace faces, do not redesign patterns, no glamour, new gold, modern illustration, 3D rendering or exaggerated saturation. If statues are present keep their shape, paint and lighting unchanged. Preserve ambiguous or large missing areas rather than speculating. No added text, labels, borders, watermark or signature. Return one full uncropped image in the same composition and aspect ratio. This will be explicitly labeled AI restoration visualization, never an official conservation result.",
+    "original": "assets/mogao-039-apsaras.jpg",
+    "output": "assets/restored/mogao-039-apsaras.png",
+    "mode": "builtin imagegen"
+  },
+  {
+    "file": "mogao-231-ceiling.png",
+    "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET: an authentic Dunhuang Academy photograph of Mogao Cave 231 ceiling lion-and-lotus canopy with surrounding flying apsaras and many small Buddhas. Create a restrained digital restoration visualization of this EXACT source. Preserve exact aspect ratio, all four edges, framing, perspective, every figure's position and scale, every limb, hand, foot, instrument, ribbon and ornament. Mend only small cracks, pigment flakes and small plaster losses by continuing immediately adjacent visible lines and texture. Retain the original muted earth mineral palette, patina, fine brushwork and material surface. Do not invent people or anatomy, do not replace faces, do not redesign patterns, no glamour, new gold, modern illustration, 3D rendering or exaggerated saturation. If statues are present keep their shape, paint and lighting unchanged. Preserve ambiguous or large missing areas rather than speculating. No added text, labels, borders, watermark or signature. Return one full uncropped image in the same composition and aspect ratio. This will be explicitly labeled AI restoration visualization, never an official conservation result.",
+    "original": "assets/mogao-231-ceiling.png",
+    "output": "assets/restored/mogao-231-ceiling.png",
+    "mode": "builtin imagegen"
+  }
+]

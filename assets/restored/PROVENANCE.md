@@ -30,6 +30,10 @@ Use case: precise-object-edit. Image 1 is the EDIT TARGET: the existing AI resto
 
 ## 保存文件
 
+### 2026-10-21 新增五幅
+
+新增榆林25窟起舞飞天、莫高322窟藻井及龛顶飞天群、莫高39窟说法图飞天、莫高231窟藻井的修复视觉示意。使用内置 imagegen 编辑工具，输入为各自官方原图。逐幅最终提示词、输入与输出文件记录于 `ADDITIONS.json`。输出文件与原图同名（扩展名统一 PNG），保存于本目录。保留原构图和姿态，轻补小面积破损；它们不是敦煌研究院修复成果。
+
 - `assets/restored/mogao-320-wall.png`，输入为 `assets/mogao-320-wall.jpg`。
 - `assets/restored/mogao-320.png`，输入为 `assets/mogao-320.png`。
 - `assets/restored/mogao-321-sky.png`，输入为 `assets/mogao-321-sky.png`。

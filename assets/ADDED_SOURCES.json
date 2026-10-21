@@ -1,0 +1,72 @@
+{
+  "checked": "2026-10-21",
+  "institution": "敦煌研究院",
+  "note": "官方公开文章原图，未经重绘或放大。AI示意单独保存。",
+  "items": [
+    {
+      "file": "yulin-25-dance.png",
+      "title": "起舞飞天",
+      "cave": "榆林窟第25窟",
+      "era": "中唐",
+      "position": "北壁",
+      "source": "https://www.dha.ac.cn/info/1426/3635.htm",
+      "image": "https://www.dha.ac.cn/__local/E/92/97/823E156BDFE9678C2D89FB4E2D7_8A88B2E4_1E1551.png",
+      "width": 605,
+      "height": 813,
+      "bytes": 1971537,
+      "sha256": "ef7f5340f09f55d0ce8f520ce2eb809fae2f93295f0131287143c447a3914e60"
+    },
+    {
+      "file": "mogao-322-ceiling.png",
+      "title": "环宝盖伎乐飞天",
+      "cave": "莫高窟第322窟",
+      "era": "初唐",
+      "position": "窟顶",
+      "source": "https://www.dha.ac.cn/info/1425/3600.htm",
+      "image": "https://www.dha.ac.cn/__local/6/6F/95/1ACF9BCB34F6683766DFCDE21A3_D57B582C_237FC8.png",
+      "width": 813,
+      "height": 714,
+      "bytes": 2326472,
+      "sha256": "4fb14f7667e39e2a479ea5f60cd0a94299765f770d7699c48b2a6f9e251677f4"
+    },
+    {
+      "file": "mogao-322-niche.png",
+      "title": "龛顶飞天群",
+      "cave": "莫高窟第322窟",
+      "era": "初唐",
+      "position": "西壁龛顶",
+      "source": "https://www.dha.ac.cn/info/1425/3600.htm",
+      "image": "https://www.dha.ac.cn/__local/D/3D/F3/2E0EDF78F564EA998881D8BFDE5_B2451925_1A00CE.png",
+      "width": 813,
+      "height": 523,
+      "bytes": 1704142,
+      "sha256": "2f9a58139e93a55ab14be53cf14f4ca9bc727aed7a54e3bf9a825f2059909b19"
+    },
+    {
+      "file": "mogao-039-apsaras.jpg",
+      "title": "说法图飞天",
+      "cave": "莫高窟第39窟",
+      "era": "盛唐",
+      "position": "西壁龛上",
+      "source": "https://www.dha.ac.cn/info/1425/3602.htm",
+      "image": "https://www.dha.ac.cn/__local/E/8B/C2/964B8DE0CD8FD03FBB23D1A42F1_0FB20303_F2BD7.jpg",
+      "width": 2000,
+      "height": 1358,
+      "bytes": 994263,
+      "sha256": "3380f4589a98e6726ff473f26bd6840a491e3f17807c9fc65f945534f69f9b4e"
+    },
+    {
+      "file": "mogao-231-ceiling.png",
+      "title": "狮子莲花飞天藻井",
+      "cave": "莫高窟第231窟",
+      "era": "中唐",
+      "position": "窟顶",
+      "source": "https://www.dha.ac.cn/info/1425/3639.htm",
+      "image": "https://www.dha.ac.cn/__local/F/98/11/00D6221FA64A2380E7467FD6C2B_5A38E833_EF816.png",
+      "width": 750,
+      "height": 505,
+      "bytes": 981014,
+      "sha256": "50a0ed80482813732f709e58f405bc1445b6a2fa5838fe23c648ff1177cb1fec"
+    }
+  ]
+}
