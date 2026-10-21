@@ -2,7 +2,7 @@ const soundtrack=document.createElement('audio');
 soundtrack.id='mMusic';soundtrack.src='assets/music/wuxia2-guzheng-pipa.mp3';soundtrack.preload='none';soundtrack.loop=true;soundtrack.volume=0;document.body.append(soundtrack);
 const soundButton=document.querySelector('#sound');
 let musicWanted=false,fadeFrame=0;
-function label(){soundButton.setAttribute('aria-pressed',String(musicWanted));soundButton.innerHTML=musicWanted?'<span>Ⅱ</span> 暂停天乐':'<span>♪</span> 听见天乐'}
+function label(){soundButton.setAttribute('aria-pressed',String(musicWanted));soundButton.innerHTML=musicWanted?'<span class="pause-icon" aria-hidden="true"><i></i><i></i></span> 暂停天乐':'<span>♪</span> 听见天乐'}
 function fade(target,duration,done){
   cancelAnimationFrame(fadeFrame);const from=soundtrack.volume,start=performance.now();
   function step(now){const t=Math.min(1,(now-start)/duration),ease=t*t*(3-2*t);soundtrack.volume=Math.max(0,Math.min(1,from+(target-from)*ease));if(t<1)fadeFrame=requestAnimationFrame(step);else if(done)done()}
