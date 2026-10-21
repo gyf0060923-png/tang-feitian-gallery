@@ -45,17 +45,20 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
       const reveal=ease((t-.77)/.23),disappear=ease(t/.21),colour=ease((t-.33)/.42);
       img.style.opacity=String(current.committed?reveal:1-disappear);
       const opacity=ease(t/.17)*(1-reveal);
-      const angle=Math.PI*1.2*ease((t-.02)/.96),cs=Math.cos(angle),sn=Math.sin(angle);
+      const angle=Math.PI*1.6*ease((t-.02)/.96),cs=Math.cos(angle),sn=Math.sin(angle);
+      const tilt=.22*Math.sin(Math.PI*t),ct=Math.cos(tilt),st=Math.sin(tilt),focal=Math.max(width,height)*1.45;
       const expansion=1+Math.sin(Math.PI*t)*.08;
       current.points.forEach(p=>{
         const spread=ease((t-.025-p.delay)/.49),gather=ease((t-.43-p.delay)/.49);
-        // Rotate one flat, evenly spread cloud about the image centre. No tapered column.
-        const vx=width/2+(p.ox*cs-p.oy*sn)*expansion;
-        const vy=height/2+(p.ox*sn+p.oy*cs)*expansion;
+        // A volume of source-colour grains turns around the central vertical axis.
+        const rx=(p.ox*cs+p.oz*sn)*expansion,rz=(-p.ox*sn+p.oz*cs)*expansion;
+        const ry=p.oy*ct-rz*st,depth=p.oy*st+rz*ct,perspective=focal/(focal-depth);
+        const vx=width/2+rx*perspective,vy=height/2+ry*perspective;
         const x=mix(mix(p.ax,vx,spread),p.bx,gather);
         const y=mix(mix(p.ay,vy,spread),p.by,gather);
         const color=colour<.001?p.old:colour>.999?p.next:`rgb(${Math.round(mix(p.c0[0],p.c1[0],colour))},${Math.round(mix(p.c0[1],p.c1[1],colour))},${Math.round(mix(p.c0[2],p.c1[2],colour))})`;
-        dot(x,y,p.r,color,opacity*.92);
+        const volume=spread*(1-gather),size=1+(perspective-1)*volume;
+        dot(x,y,p.r*size,color,opacity*(.92+Math.min(.06,depth/focal*.25)*volume));
       });
       if(t>=1)finish(true);
     }
@@ -72,7 +75,8 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
         const first=[c0[i],c0[i+1],c0[i+2]],second=[c1[i],c1[i+1],c1[i+2]];
         const ox=(u-.5)*Math.min(width*.69,Math.max(old.baseW,nw)*.9);
         const oy=(v-.5)*Math.min(height*.72,Math.max(old.baseH,nh)*.9);
-        points.push({ax:a[0],ay:a[1],bx,by,ox,oy,delay:random(-.02,.025),r:random(.45,1.05),c0:first,c1:second,old:`rgb(${first})`,next:`rgb(${second})`});
+        const oz=random(-1,1)*Math.min(width*.24,height*.4)*Math.sqrt(Math.max(.06,1-(2*u-1)**2-(2*v-1)**2));
+        points.push({ax:a[0],ay:a[1],bx,by,ox,oy,oz,delay:random(-.02,.025),r:random(.45,1.05),c0:first,c1:second,old:`rgb(${first})`,next:`rgb(${second})`});
       }
       scene={points,commit,committed:false,start:performance.now()};view.classList.add('changing');start();
     }catch{commit();finish()}
