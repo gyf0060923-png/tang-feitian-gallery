@@ -40,17 +40,24 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
       dot(x+p.ox,y+p.oy,p.r,'#d5c19c',.34+.28*Math.sin(now*.001+p.phase)**2);
     });ctx.restore();
     if(scene){
-      const current=scene,t=clamp((now-current.start)/2400);
+      const current=scene,t=clamp((now-current.start)/1500);
       if(t>=.52&&!current.committed){current.committed=true;current.commit();img.style.opacity='0'}
       const reveal=ease((t-.77)/.23),disappear=ease(t/.21),colour=ease((t-.33)/.42);
       img.style.opacity=String(current.committed?reveal:1-disappear);
       const opacity=ease(t/.17)*(1-reveal);
       current.points.forEach(p=>{
         const spread=ease((t-.025-p.delay)/.49),gather=ease((t-.43-p.delay)/.49);
-        const x=mix(mix(p.ax,p.cx,spread),p.bx,gather)+Math.sin(Math.PI*spread)*p.curve*(1-gather);
-        const y=mix(mix(p.ay,p.cy,spread),p.by,gather)+Math.sin(Math.PI*gather)*p.curve*.6;
+        // A rotating, tapered column gives the grains a layered tornado silhouette.
+        // Both entry and exit use cubic easing, so the vortex never snaps into place.
+        const angle=p.angle+Math.PI*2*1.15*ease((t-.02)/.96);
+        const depth=(Math.sin(angle)+1)/2;
+        const vx=width/2+Math.cos(angle)*p.radius;
+        const vy=height/2+(p.v-.5)*current.funnelHeight+Math.sin(angle)*p.radius*.2;
+        const x=mix(mix(p.ax,vx,spread),p.bx,gather);
+        const y=mix(mix(p.ay,vy,spread),p.by,gather);
         const color=colour<.001?p.old:colour>.999?p.next:`rgb(${Math.round(mix(p.c0[0],p.c1[0],colour))},${Math.round(mix(p.c0[1],p.c1[1],colour))},${Math.round(mix(p.c0[2],p.c1[2],colour))})`;
-        dot(x,y,p.r,color,opacity*.92);
+        const orbit=spread*(1-gather);
+        dot(x,y,p.r*(1+orbit*(depth-.5)*.22),color,opacity*(.92-orbit*(1-depth)*.22));
       });
       if(t>=1)finish(true);
     }
@@ -64,11 +71,11 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
       for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
         const u=(x+random(.2,.8))/cols,v=(y+random(.2,.8))/rows,i=(y*cols+x)*4;
         const a=point(u,v,old),bx=width/2+(u-.5)*nw,by=height/2+(v-.5)*nh;
-        const cloudX=a[0]+(u-.5)*random(100,260)+random(-55,55),cloudY=a[1]+(v-.5)*random(80,210)+random(-45,45);
         const first=[c0[i],c0[i+1],c0[i+2]],second=[c1[i],c1[i+1],c1[i+2]];
-        points.push({ax:a[0],ay:a[1],bx,by,cx:cloudX,cy:cloudY,curve:random(-35,35),delay:random(-.02,.025),r:random(.45,1.05),c0:first,c1:second,old:`rgb(${first})`,next:`rgb(${second})`});
+        const radius=16+Math.pow(1-v,1.12)*Math.min(width*.31,240);
+        points.push({ax:a[0],ay:a[1],bx,by,v,radius,angle:u*Math.PI*2+v*3.1+random(-.05,.05),delay:random(-.02,.025),r:random(.45,1.05),c0:first,c1:second,old:`rgb(${first})`,next:`rgb(${second})`});
       }
-      scene={points,commit,committed:false,start:performance.now()};view.classList.add('changing');start();
+      scene={points,commit,committed:false,start:performance.now(),funnelHeight:Math.min(height*.77,Math.max(old.baseH*old.scale,nh)*.95)};view.classList.add('changing');start();
     }catch{commit();finish()}
   }
   new ResizeObserver(resize).observe(view);resize();sync();
