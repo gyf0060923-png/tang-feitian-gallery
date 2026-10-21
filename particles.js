@@ -22,7 +22,7 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
   function start(){if(enabled&&!document.hidden&&!frame)frame=requestAnimationFrame(draw)}
   function stop(){cancelAnimationFrame(frame);frame=0;last=0;finish(true);ctx.clearRect(0,0,width,height)}
   function sync(){toggle.setAttribute('aria-pressed',String(enabled));toggle.innerHTML=`<span>${enabled?'✧':'○'}</span> 动效${enabled?'开启':'关闭'}`;canvas.hidden=!enabled;view.dataset.motion=enabled?'on':'off';if(enabled)start();else stop()}
-  toggle.onclick=()=>{chosen=true;enabled=!enabled;sync();setHint(enabled?'原图静赏 · 切换时前画散开、后画凝聚':'动效已关闭 · 拖动与缩放细赏原图')};
+  toggle.onclick=()=>{chosen=true;enabled=!enabled;sync();setHint(enabled?'壁画静赏 · 切换时前画散开、后画凝聚':'动效已关闭 · 拖动与缩放细赏壁画')};
   reduced.addEventListener('change',()=>{if(!chosen){enabled=!reduced.matches;sync()}});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
   view.addEventListener('pointermove',e=>{const r=view.getBoundingClientRect();pointer={x:e.clientX-r.left-view.clientLeft,y:e.clientY-r.top-view.clientTop}});
@@ -43,25 +43,26 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
     if(scene){
       const current=scene,t=clamp((now-current.start)/1000);
       if(t>=.58&&!current.committed){current.committed=true;current.commit();img.style.opacity='0'}
-      const reveal=ease((t-.9)/.1),disappear=ease(t/.15),colour=ease((t-.58)/.32);
+      const reveal=ease((t-.92)/.08),disappear=ease(t/.15);
       img.style.opacity=String(current.committed?reveal:1-disappear);
       const opacity=ease(t/.12)*(1-reveal);
-      // Rotation ends before gathering begins; the dispersed volume holds its angle.
-      const turn=ease(t/.55),angle=Math.PI*turn,cs=Math.cos(angle),sn=Math.sin(angle);
-      const tilt=.22*turn,ct=Math.cos(tilt),st=Math.sin(tilt),focal=Math.max(width,height)*1.45;
+      const focal=Math.max(width,height)*1.6;
       current.points.forEach(p=>{
-        const spread=1-Math.pow(1-clamp((t-p.delay)/.55),3);
-        const gather=ease((t-.6-p.delay)/.34);
-        // Every grain departs its own source pixel along an independent outward path.
-        // No common radius, spherical destination, or bounded cloud silhouette.
-        const dx=p.sx+p.vx*spread,dy=p.sy+p.vy*spread,dz=p.vz*spread;
-        const rx=dx*cs+dz*sn,rz=-dx*sn+dz*cs;
-        const ry=dy*ct-rz*st,depth=dy*st+rz*ct,perspective=focal/(focal-clamp(depth,-focal*.6,focal*.6));
-        const vx=width/2+rx*perspective,vy=height/2+ry*perspective;
-        const x=mix(vx,p.bx,gather),y=mix(vy,p.by,gather);
+        // Each row advances from 0 to 2π once, never backwards. Staggered rows
+        // form a 3D helicoid and arrive in the next painting in the same motion.
+        const progress=ease((t-p.delay)/.7),angle=Math.PI*2*progress;
+        const volume=Math.sin(Math.PI*progress)**2;
+        const flatX=mix(p.sx,p.bx-width/2,progress)+p.lift*volume;
+        const flatY=mix(p.sy,p.by-height/2,progress);
+        const z=p.depth*volume,rx=flatX*Math.cos(angle)+z*Math.sin(angle);
+        const depth=-flatX*Math.sin(angle)+z*Math.cos(angle);
+        const perspective=focal/(focal-clamp(depth,-focal*.6,focal*.6));
+        const x=width/2+rx*perspective,y=height/2+flatY*perspective;
+        const colour=ease((progress-.28)/.55);
         const color=colour<.001?p.old:colour>.999?p.next:`rgb(${Math.round(mix(p.c0[0],p.c1[0],colour))},${Math.round(mix(p.c0[1],p.c1[1],colour))},${Math.round(mix(p.c0[2],p.c1[2],colour))})`;
-        const volume=spread*(1-gather),size=1+(perspective-1)*volume;
-        dot(x,y,p.r*size,color,opacity*(.92+Math.min(.06,depth/focal*.25)*volume));
+        const size=1+(perspective-1)*volume;
+        const shading=1+(clamp(.72+depth/focal*1.8,.38,1)-1)*volume;
+        dot(x,y,p.r*size,color,opacity*.94*shading);
       });
       if(t>=1)finish(true);
     }
@@ -77,10 +78,9 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
         const a=point(u,v,old),bx=width/2+(u-.5)*nw,by=height/2+(v-.5)*nh;
         const first=[c0[i],c0[i+1],c0[i+2]],second=[c1[i],c1[i+1],c1[i+2]];
         const sx=a[0]-width/2,sy=a[1]-height/2;
-        const vx=(u-.5)*width*random(.45,1.25)+gaussian()*width*.15;
-        const vy=(v-.5)*height*random(.45,1.25)+gaussian()*height*.17;
-        const vz=gaussian()*Math.max(width,height)*.27;
-        points.push({bx,by,sx,sy,vx,vy,vz,delay:random(0,.018),r:random(.45,1.05),c0:first,c1:second,old:`rgb(${first})`,next:`rgb(${second})`});
+        const lift=(u<.5?-1:1)*width*random(.025,.1);
+        const depth=gaussian()*height*.025;
+        points.push({bx,by,sx,sy,lift,depth,delay:v*.3,r:random(.45,1.05),c0:first,c1:second,old:`rgb(${first})`,next:`rgb(${second})`});
       }
       scene={points,commit,committed:false,start:performance.now()};view.classList.add('changing');start();
     }catch{commit();finish()}
