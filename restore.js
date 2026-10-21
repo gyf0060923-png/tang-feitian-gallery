@@ -14,7 +14,7 @@ window.setupMuralRestoration = function ({shell,getExhibit}) {
     const x=getExhibit();dialog.querySelector('#restoreTitle').textContent='AI修复 · '+x.name;
     before.src=x.src;before.alt=x.cave+' '+x.name+'，敦煌研究院原图';
     stage.classList.remove('ready');loading.hidden=false;loading.textContent='正在载入修复示意图…';
-    split(50);after.src='assets/restored/'+x.src.split('/').at(-1).replace(/\.[^.]+$/,'.png');
+    split(50);after.src='assets/restored/'+x.src.split('/').at(-1).replace(/\.[^.]+$/,'.png')+'?v=20261021-foot16';
     after.alt=x.name+' · AI修复示意（生成补绘，非原始壁画）';
     dialog.querySelector('.restore-foot a').href=x.link;
     button.setAttribute('aria-pressed','true');dialog.showModal();

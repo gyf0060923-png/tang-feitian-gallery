@@ -41,17 +41,18 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
     });ctx.restore();
     if(scene){
       const current=scene,t=clamp((now-current.start)/1000);
-      if(t>=.52&&!current.committed){current.committed=true;current.commit();img.style.opacity='0'}
-      const reveal=ease((t-.77)/.23),disappear=ease(t/.21),colour=ease((t-.33)/.42);
+      if(t>=.58&&!current.committed){current.committed=true;current.commit();img.style.opacity='0'}
+      const reveal=ease((t-.9)/.1),disappear=ease(t/.15),colour=ease((t-.58)/.32);
       img.style.opacity=String(current.committed?reveal:1-disappear);
-      const opacity=ease(t/.17)*(1-reveal);
-      const angle=Math.PI*1.6*ease((t-.02)/.96),cs=Math.cos(angle),sn=Math.sin(angle);
-      const tilt=.22*Math.sin(Math.PI*t),ct=Math.cos(tilt),st=Math.sin(tilt),focal=Math.max(width,height)*1.45;
-      const expansion=1+Math.sin(Math.PI*t)*.08;
+      const opacity=ease(t/.12)*(1-reveal);
+      // Rotation ends before gathering begins; the dispersed volume holds its angle.
+      const turn=ease(t/.55),angle=Math.PI*1.6*turn,cs=Math.cos(angle),sn=Math.sin(angle);
+      const tilt=.22*turn,ct=Math.cos(tilt),st=Math.sin(tilt),focal=Math.max(width,height)*1.45;
       current.points.forEach(p=>{
-        const spread=ease((t-.025-p.delay)/.49),gather=ease((t-.43-p.delay)/.49);
+        const spread=1-Math.pow(1-clamp((t-p.delay)/.48),3);
+        const gather=ease((t-.6-p.delay)/.34);
         // A volume of source-colour grains turns around the central vertical axis.
-        const rx=(p.ox*cs+p.oz*sn)*expansion,rz=(-p.ox*sn+p.oz*cs)*expansion;
+        const rx=p.ox*cs+p.oz*sn,rz=-p.ox*sn+p.oz*cs;
         const ry=p.oy*ct-rz*st,depth=p.oy*st+rz*ct,perspective=focal/(focal-depth);
         const vx=width/2+rx*perspective,vy=height/2+ry*perspective;
         const x=mix(mix(p.ax,vx,spread),p.bx,gather);
@@ -73,10 +74,13 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
         const u=(x+random(.2,.8))/cols,v=(y+random(.2,.8))/rows,i=(y*cols+x)*4;
         const a=point(u,v,old),bx=width/2+(u-.5)*nw,by=height/2+(v-.5)*nh;
         const first=[c0[i],c0[i+1],c0[i+2]],second=[c1[i],c1[i+1],c1[i+2]];
-        const ox=(u-.5)*Math.min(width*.69,Math.max(old.baseW,nw)*.9);
-        const oy=(v-.5)*Math.min(height*.72,Math.max(old.baseH,nh)*.9);
-        const oz=random(-1,1)*Math.min(width*.24,height*.4)*Math.sqrt(Math.max(.06,1-(2*u-1)**2-(2*v-1)**2));
-        points.push({ax:a[0],ay:a[1],bx,by,ox,oy,oz,delay:random(-.02,.025),r:random(.45,1.05),c0:first,c1:second,old:`rgb(${first})`,next:`rgb(${second})`});
+        // Independent 3D destinations break up the rectangular image into a loose cloud.
+        const azimuth=random(0,Math.PI*2),vertical=random(-1,1),radius=Math.cbrt(Math.random());
+        const ring=Math.sqrt(1-vertical*vertical)*radius;
+        const ox=Math.cos(azimuth)*ring*width*.43;
+        const oy=vertical*radius*height*.39;
+        const oz=Math.sin(azimuth)*ring*Math.min(width*.32,height*.62);
+        points.push({ax:a[0],ay:a[1],bx,by,ox,oy,oz,delay:random(0,.018),r:random(.45,1.05),c0:first,c1:second,old:`rgb(${first})`,next:`rgb(${second})`});
       }
       scene={points,commit,committed:false,start:performance.now()};view.classList.add('changing');start();
     }catch{commit();finish()}
