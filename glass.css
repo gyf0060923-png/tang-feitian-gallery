@@ -45,3 +45,5 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:1px solid #dfc2
 .museum-mode header{overflow:hidden;contain:paint;isolation:isolate}.museum-mode #museum{position:relative;isolation:isolate}.viewer-header{position:relative;z-index:8}.exhibit-main{min-height:0}.exhibit-side .m-thumb{backdrop-filter:none;-webkit-backdrop-filter:none}
 .museum-mode header{backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(110deg,#3a2e234a,#15161339)}.m-view{backdrop-filter:none;-webkit-backdrop-filter:none}.museum-mode:before{display:none}
 .restore-after{position:absolute;inset:0;pointer-events:none}.restore-source-foot{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:none}
+
+.photo-catalog-link{display:block;color:#d5bc8b;font-size:9px;text-decoration:none;margin-top:4px}.photo-catalog-link:hover{color:#f2dbb3;text-decoration:underline}
