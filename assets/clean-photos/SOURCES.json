@@ -1,0 +1,204 @@
+{
+  "checked": "2026-10-22",
+  "note": "仅收录公开文章中无可见水印的配图；图像版权归原权利人，来源标注不代表官方授权。新增照片未经AI补绘；原图不修改。",
+  "items": [
+    {
+      "id": "gscn-217",
+      "title": "穿楼而过的飞天",
+      "cave": "莫高窟第217窟",
+      "caveLabel": "莫高窟 · 第217窟",
+      "era": "盛唐",
+      "caption": "北壁 · 观无量寿经变局部",
+      "spots": [
+        [
+          0.14,
+          0.18,
+          "凌空飞天"
+        ],
+        [
+          0.66,
+          0.19,
+          "穿行楼阁"
+        ]
+      ],
+      "source": "https://gansu.gscn.com.cn/system/2022/04/10/012742352.shtml",
+      "sourceLabel": "中国甘肃网",
+      "attribution": "中国甘肃网，文章来源：甘肃省文物局",
+      "period_source": "https://www.dha.ac.cn/info/1425/3604.htm",
+      "image": "https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2022%2F0410%2F2d12ef56j00ra4gu10050c000hw00cqg.jpg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "file": "assets/clean-photos/gscn-217.jpg",
+      "dimensions": [
+        644,
+        458
+      ],
+      "watermark": false,
+      "review": "人工逐张查看原始配图；未见可见水印。保留原始文件、画幅和色彩，未去水印、未生成补绘。",
+      "sha256": "96868d79142b278d1ad7cefa55eb867033fbf16105d97d12a8409ce310c5c1fd"
+    },
+    {
+      "id": "gscn-158",
+      "title": "云间飞天",
+      "cave": "莫高窟第158窟",
+      "caveLabel": "莫高窟 · 第158窟",
+      "era": "中唐",
+      "caption": "西壁南侧上部",
+      "spots": [
+        [
+          0.55,
+          0.34,
+          "回旋飘带"
+        ],
+        [
+          0.51,
+          0.64,
+          "飞天身姿"
+        ]
+      ],
+      "source": "https://gansu.gscn.com.cn/system/2022/04/10/012742352.shtml",
+      "sourceLabel": "中国甘肃网",
+      "attribution": "中国甘肃网，文章来源：甘肃省文物局",
+      "period_source": "https://www.dha.ac.cn/info/1425/3663.htm",
+      "image": "https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2022%2F0410%2F97e53418j00ra4gu40054c000fu00i2g.jpg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "file": "assets/clean-photos/gscn-158.jpg",
+      "dimensions": [
+        570,
+        650
+      ],
+      "watermark": false,
+      "review": "人工逐张查看原始配图；未见可见水印。保留原始文件、画幅和色彩，未去水印、未生成补绘。",
+      "sha256": "0c21db7d46057905c9990c3a66501a95c15a2ade691f8c077d07c5bfcc1e61c6"
+    },
+    {
+      "id": "mogao57-2",
+      "title": "宝池上双飞天",
+      "cave": "莫高窟第57窟",
+      "caveLabel": "莫高窟 · 第57窟",
+      "era": "初唐",
+      "caption": "北壁中央 · 阿弥陀佛说法图",
+      "spots": [
+        [
+          0.2,
+          0.17,
+          "左侧飞天"
+        ],
+        [
+          0.8,
+          0.17,
+          "右侧飞天"
+        ]
+      ],
+      "source": "https://www.dha.ac.cn/info/1425/3695.htm",
+      "sourceLabel": "敦煌研究院",
+      "attribution": "敦煌研究院",
+      "period_source": "https://www.dha.ac.cn/info/1425/3695.htm",
+      "image": "https://www.dha.ac.cn/__local/A/79/2E/D15A0ED217754856DA7C4CBBB3E_525C1C5F_180925.png",
+      "file": "assets/clean-photos/mogao57-2.png",
+      "dimensions": [
+        563,
+        698
+      ],
+      "watermark": false,
+      "review": "人工逐张查看原始配图；未见可见水印。保留原始文件、画幅和色彩，未去水印、未生成补绘。",
+      "sha256": "4f98e635ff4a7004337da6f3f5d93816474b2562cef4d654973447c4419767c7"
+    },
+    {
+      "id": "mogao329-1",
+      "title": "夜半逾城 · 飞天",
+      "cave": "莫高窟第329窟",
+      "caveLabel": "莫高窟 · 第329窟",
+      "era": "初唐",
+      "caption": "西壁龛顶南侧",
+      "spots": [
+        [
+          0.76,
+          0.23,
+          "云中飞天"
+        ],
+        [
+          0.37,
+          0.52,
+          "夜半逾城"
+        ]
+      ],
+      "source": "https://www.dha.ac.cn/info/1425/3577.htm",
+      "sourceLabel": "敦煌研究院",
+      "attribution": "敦煌研究院",
+      "period_source": "https://www.dha.ac.cn/info/1425/3577.htm",
+      "image": "https://www.dha.ac.cn/__local/1/8D/9A/CB2938EECC9EE6BDDA167620BB8_A93F1C1E_2C4E3.jpg",
+      "file": "assets/clean-photos/mogao329-1.jpg",
+      "dimensions": [
+        450,
+        304
+      ],
+      "watermark": false,
+      "review": "人工逐张查看原始配图；未见可见水印。保留原始文件、画幅和色彩，未去水印、未生成补绘。",
+      "sha256": "ac00d58613879c3287880495d245a2272f4cd85f07933f7470b4f5afa751feef"
+    },
+    {
+      "id": "mogao329-2",
+      "title": "乘象入胎 · 伎乐飞天",
+      "cave": "莫高窟第329窟",
+      "caveLabel": "莫高窟 · 第329窟",
+      "era": "初唐",
+      "caption": "西壁龛顶北侧",
+      "spots": [
+        [
+          0.19,
+          0.32,
+          "奏乐飞天"
+        ],
+        [
+          0.85,
+          0.34,
+          "伎乐飞天"
+        ]
+      ],
+      "source": "https://www.dha.ac.cn/info/1425/3577.htm",
+      "sourceLabel": "敦煌研究院",
+      "attribution": "敦煌研究院",
+      "period_source": "https://www.dha.ac.cn/info/1425/3577.htm",
+      "image": "https://www.dha.ac.cn/__local/2/76/28/6D116BF9EB3658E8DBA9688C0EF_A67B3BB0_D0D35.png",
+      "file": "assets/clean-photos/mogao329-2.png",
+      "dimensions": [
+        563,
+        379
+      ],
+      "watermark": false,
+      "review": "人工逐张查看原始配图；未见可见水印。保留原始文件、画幅和色彩，未去水印、未生成补绘。",
+      "sha256": "0c414e573532eda1d32170a9e4c997b07598a6a3a3a8e5462a016bcef0aa832f"
+    },
+    {
+      "id": "mogao329-0",
+      "title": "莲花藻井与龛顶飞天",
+      "cave": "莫高窟第329窟",
+      "caveLabel": "莫高窟 · 第329窟",
+      "era": "初唐",
+      "caption": "西壁龛顶及窟顶藻井",
+      "spots": [
+        [
+          0.52,
+          0.28,
+          "飞天藻井"
+        ],
+        [
+          0.51,
+          0.76,
+          "龛顶飞天群"
+        ]
+      ],
+      "source": "https://www.dha.ac.cn/info/1425/3577.htm",
+      "sourceLabel": "敦煌研究院",
+      "attribution": "敦煌研究院",
+      "period_source": "https://www.dha.ac.cn/info/1425/3577.htm",
+      "image": "https://www.dha.ac.cn/__local/1/47/8E/BE397C918FCC27E02ED294CD7A8_66ECC9EC_1C8BF5.png",
+      "file": "assets/clean-photos/mogao329-0.png",
+      "dimensions": [
+        563,
+        829
+      ],
+      "watermark": false,
+      "review": "人工逐张查看原始配图；未见可见水印。保留原始文件、画幅和色彩，未去水印、未生成补绘。",
+      "sha256": "57027d51985515936ed2575a9174c3076cbedaa0882c5c90a5fdd908110340ec"
+    }
+  ]
+}

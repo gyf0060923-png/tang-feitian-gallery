@@ -1,9 +1,10 @@
 // One gallery-wide view mode. The originals stay available with the same button.
 window.createMuralRestoration = function ({exhibits,button,onChange,setHint}) {
-  const cache=new Map(),sources=new Map();let enabled=false,busy=false;
+  const cache=new Map(),sources=new Map();let enabled=false,busy=false,current=null;
   function load(src){return new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Image unavailable'));image.src=src})}
   function pixels(image){const c=document.createElement('canvas');c.width=image.naturalWidth;c.height=image.naturalHeight;c.getContext('2d').drawImage(image,0,0);return c.toDataURL('image/png')}
   async function prepare(x){
+    if(x.restorable===false)return x.src;
     if(cache.has(x.src))return cache.get(x.src);
     const task=(async()=>{
       const url='assets/restored/'+x.src.split('/').at(-1).replace(/\.[^.]+$/,'.png')+'?v=20261021-sourcefoot19';
@@ -18,7 +19,7 @@ window.createMuralRestoration = function ({exhibits,button,onChange,setHint}) {
     cache.set(x.src,task);
     try{return await task}catch(error){cache.delete(x.src);throw error}
   }
-  function sync(){button.setAttribute('aria-pressed',String(enabled));button.setAttribute('aria-busy',String(busy));button.disabled=busy;button.innerHTML=busy?'✧ 修复载入中…':enabled?'✦ AI修复 · 开启':'✧ AI修复';button.title=enabled?'点击恢复全部原始壁画':'点击展示全部壁画的AI修复示意'}
+  function sync(){const preview=current?.restorable===false;button.setAttribute('aria-pressed',String(enabled&&!preview));button.setAttribute('aria-busy',String(busy));button.disabled=busy||preview;button.innerHTML=busy?'✧ 修复载入中…':enabled&&!preview?'✦ AI修复 · 开启':'✧ AI修复';button.title=preview?'此作品暂未提供AI修复示意':enabled?'点击恢复原始壁画':'点击展示已有壁画的AI修复示意'}
   button.onclick=async()=>{
     if(busy)return;
     if(enabled){enabled=false;sync();onChange();return}
@@ -31,5 +32,5 @@ window.createMuralRestoration = function ({exhibits,button,onChange,setHint}) {
     finally{busy=false;sync()}
   };
   sync();
-  return {get enabled(){return enabled},source:x=>enabled?sources.get(x.src):x.src};
+  return {get enabled(){return enabled},select(x){current=x;sync()},isRestored:x=>enabled&&x.restorable!==false&&sources.has(x.src),source:x=>enabled&&x.restorable!==false?(sources.get(x.src)||x.src):x.src};
 };
