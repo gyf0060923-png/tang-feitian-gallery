@@ -1,5 +1,5 @@
 (()=>{
-const data=window.TANG_PHOTOS.items.filter(x=>x.watermark===false),grid=document.querySelector('#grid'),cave=document.querySelector('#cave'),search=document.querySelector('#search');let era='全部';
+const data=window.TANG_PHOTOS.items.filter(x=>x.watermark===false).map(x=>({...x,src:x.file})),grid=document.querySelector('#grid'),cave=document.querySelector('#cave'),search=document.querySelector('#search');let era='全部';
 const caveName=x=>x.caveLabel.replace(' · ',''),names=[...new Set(data.map(caveName))].sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true}));
 names.forEach(name=>{const option=document.createElement('option');option.value=option.textContent=name;cave.append(option)});
 data.forEach(x=>{
@@ -19,6 +19,12 @@ data.forEach(x=>{
  bottom.append(quality,source);card.append(link,bottom);grid.append(card);
 });
 function filter(){const term=search.value.trim().toLowerCase();let count=0;[...grid.children].forEach((card,i)=>{const x=data[i],visible=(era==='全部'||x.era===era)&&(cave.value==='全部'||caveName(x)===cave.value)&&(!term||(x.title+x.cave+x.era).toLowerCase().includes(term));card.hidden=!visible;if(visible)count++});document.querySelector('#count').textContent=count+' 幅壁画';document.querySelector('#empty').hidden=count>0}
+const restoration=window.createMuralRestoration({exhibits:data,button:document.querySelector('#pRestore'),setHint:text=>document.querySelector('#photoStatus').textContent=text,onChange:()=>{
+ data.forEach((x,i)=>{const card=grid.children[i],enabled=restoration.enabled;card.querySelector('img').src=restoration.source(x);card.querySelector('img').alt=x.cave+' '+x.title+(enabled?' · AI修复示意':'，来源：'+(x.attribution||x.sourceLabel));card.querySelector('.card-bottom span').textContent=enabled?'AI修复示意':'壁画实拍';card.querySelector('a').href='index.html?work='+encodeURIComponent(x.id)+(enabled?'&restored=1':'')});
+ document.querySelector('#photoStatus').textContent=restoration.enabled?'AI修复示意 · 可切回原始壁画':'点击照片进入主展台 · 每张附原始文章出处';
+ document.querySelectorAll('header a').forEach(link=>link.href='index.html'+(restoration.enabled?'?restored=1':''));
+}});
 document.querySelector('.collection strong').textContent=data.length;
 document.querySelectorAll('[data-era]').forEach(button=>button.onclick=()=>{era=button.dataset.era;document.querySelectorAll('[data-era]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));filter()});cave.onchange=filter;search.oninput=filter;filter();
+if(new URLSearchParams(location.search).get('restored')==='1')document.querySelector('#pRestore').click();
 })();

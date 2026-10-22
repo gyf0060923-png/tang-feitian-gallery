@@ -58,3 +58,7 @@ Use case: precise-object-edit. Edit target: the supplied authentic Dunhuang mura
 - mogao-321: Mogao Cave 321 pair of flying apsaras beside the bodhi tree, blue-green mural
 - mogao-321-sky: Mogao Cave 321 pure-land sky detail with floating musical instruments and apsaras
 - mogao-320-wall: the complete Mogao Cave 320 south wall, rows of small Buddhas around the central preaching scene and flying apsaras above
+
+## 新增6幅修复示意（全馆18幅）
+
+使用内置 imagegen 逐张编辑第217窟穿楼飞天、第158窟云间飞天、第57窟宝池上双飞天，以及第329窟夜半逾城、乘象入胎、藻井与龛顶全景。保留源画幅、主体姿态与主要线条，修补小范围损伤并恢复矿物色层次；不推测大面积缺失面貌。全部是AI生成视觉示意，原照片未修改。完整最终提示词与输入输出记录见 `ADDITIONS_28.json`。
