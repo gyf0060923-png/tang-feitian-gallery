@@ -1,0 +1,10 @@
+{
+  "subject": "榆林窟第15窟 · 吹横笛飞天",
+  "edit": "仅修复AI示意图腹部的墙体裂痕，保留真实身体轮廓与腰线。原始壁画未修改；既有原图足部保护继续合成。",
+  "mode": "builtin imagegen",
+  "input": "assets/restored/yulin-15-flute.png",
+  "location_reference": "用户标注截图：腹部红框中的墙体裂痕",
+  "output": "assets/restored/yulin-15-flute-crack-repaired.png",
+  "generated_original": "C:\\Users\\ASUS\\.codex\\generated_images\\01a159ba-58a6-79a2-88e0-cbe7f77bea9b\\exec-751d8f57-fb61-43c9-b7be-4075269c114e.png",
+  "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET: the existing full AI-restoration visualization of the Yulin Cave 15 flute-playing apsara. Image 2 is ONLY an annotated location reference from the gallery, with a red rectangle around the defect; do NOT reproduce its UI, crop or red rectangle. Make ONE SMALL LOCAL REPAIR in image 1. The narrow, vertically jagged brown/grey double line crossing the bare LOWER ABDOMEN is a crack in the plaster wall, NOT a scar, tattoo, body decoration, muscle line or garment seam. Completely remove that irregular crack and its adjacent grey fissure from just below the crossed forearm down to the waist, approximately normalized x=0.65–0.70, y=0.67–0.775 in the full image 1. Fill only the crack pixels with the surrounding pale warm ivory skin/plaster tone and the same very fine aged mural grain, with seamless colour and texture matching. Keep the real smooth curved body contour at the upper abdomen and the curved waist/white garment border underneath intact and precisely aligned. Do not introduce a belly-button, shading, new body lines, blurred smudges or an obvious patch. Preserve ALL other parts of image 1 as closely as possible: identical framing/aspect ratio and all four image edges, position and shape of the body, face, hands, fingers, flute, jewellery, red/green ribbons, brown skirt, foot, patterned garment, parchment background, plaster texture and colours. Do not redraw the whole figure, crop, shift, rescale or change the anatomy. Do not repair other regions or add any object. Output the complete edited image 1, not a crop. No added text, UI, border, annotation, signature or watermark."
+}

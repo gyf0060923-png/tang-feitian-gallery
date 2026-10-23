@@ -6,7 +6,8 @@ window.createMuralRestoration = function ({exhibits,button,onChange,setHint}) {
   async function prepare(x){
     if(cache.has(x.src))return cache.get(x.src);
     const task=(async()=>{
-      const url='assets/restored/'+x.src.split('/').at(-1).replace(/\.[^.]+$/,'.png')+'?v=20261023-restore28';
+      const file=x.src.endsWith('/yulin-15-flute.png')?'yulin-15-flute-crack-repaired.png':x.src.split('/').at(-1).replace(/\.[^.]+$/,'.png');
+      const url='assets/restored/'+file+'?v=20261023-'+(x.src.endsWith('/yulin-15-flute.png')?'abdomen29':'restore28');
       const restored=await load(url);
       if(!x.src.endsWith('/yulin-15-flute.png'))return url;
       const original=await load(x.src);
