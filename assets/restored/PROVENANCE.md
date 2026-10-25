@@ -66,3 +66,7 @@ Use case: precise-object-edit. Edit target: the supplied authentic Dunhuang mura
 ## 吹横笛飞天腹部裂痕修正
 
 用户指出腹部锯齿状线是墙体裂痕。使用内置 imagegen 以现有AI示意为编辑目标、用户红框截图为定位参考，仅去除腹部裂痕并延续邻近肌肤色调与纹理，保留身体弧线、腰线、衣带、手势及全图构图。修正版单独保存为 `yulin-15-flute-crack-repaired.png`，`restore.js` 对所有看图工具和图册统一采用此图，并继续合成先前核对的原画足部。原始壁画不修改。完整提示词见 `ABDOMEN_29.json`。
+
+## 展示文件编译（加载可靠性）
+
+旧版 `restore.js` 中已确认的吹横笛飞天SVG足部保护，连同腹部裂痕修正版，使用同一浏览器渲染器在原像素尺寸导出，再做无损WebP编码。完整画幅解码RGBA核对一致，没有新增补绘或重画；修正后的脚、腹部、颜色及构图均编入 `assets/delivery` 展示资源。页面不再依赖多张大图与运行时SVG合成才能显示此作品。主展台、图册、放大镜、取色和粒子统一使用交付资源。

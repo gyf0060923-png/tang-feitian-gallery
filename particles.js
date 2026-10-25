@@ -87,9 +87,10 @@ window.createFeitianEffects = function ({view,img,state,setHint}) {
   }
   new ResizeObserver(resize).observe(view);resize();sync();
   return {
-    change(index,commit,src){
+    change(index,commit,src,readyImage){
       const id=++token;finish();
       if(!initialized||index===state().active||!enabled||document.hidden){initialized=true;commit();return}
+      if(readyImage){animate(readyImage,commit);return}
       const next=new Image();next.onload=()=>{if(id!==token)return;if(!enabled||document.hidden){commit();return}animate(next,commit)};
       next.onerror=()=>{if(id===token)setHint('壁画暂未加载完成，可再次选择作品')};next.src=src;
     },
